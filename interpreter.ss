@@ -1,4 +1,4 @@
-#!/usr/bin/guile -s
+#!/usr/local/bin/guile -s
 !#
 
 
@@ -11,7 +11,9 @@
 	  ((pair? e) #f)
 	  (else #t))))
 
-(define build cons)
+(define build
+  (lambda (x y)
+    (cons x (cons y '()))))
 (define first car)
 (define second cadr)
 (define third caddr)
@@ -204,7 +206,7 @@
 
 (define meaning
   (lambda (e table)
-    ((expression-to-action e) e table))  
+    ((expression-to-action e) e table)))  
 
 (define value
   (lambda (e)
